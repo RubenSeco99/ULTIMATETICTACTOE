@@ -1,2 +1,2 @@
-# ULTIMATETICTACTOE
+# UltimateTicTacToe
 Trabaho Linguagens Script

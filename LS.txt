@@ -1,0 +1,32 @@
+COMPONENTES:
+ecra inicial
+	imagem ecra inicial (RUBEN)
+	botão start (RUBEN)
+	ver top 10 (RUBEN)
+	INDICE (RUBEN)
+	
+-ver top 10
+	lista(nome e pontuação) (RUBEN)
+	Botão retroceder	 (RUBEN)
+-botao start
+	ecrã :escolher player vs pc || player vs player (DAVI)
+	Painel Nome jogadores (DAVI)
+	ecrã modo jogo (DAVI)
+paineis jogo (AFONSO)
+	painel principal jogo(meio) (AFONSO)
+		9 tabuleiros  (AFONSO)
+			tabuleiro (AFONSO)
+				X || O (AFONSO)
+	xx painel ver top 10 (direita)
+	painel indicações(esq):
+		titulo jogo (DAVI)
+		-- painel nomes jogadores -seu simbolo (DAVI)
+		temporizador (DAVI)
+		dificuldade (DAVI)
+
+
+____________________________________________________________
+
+		
+
+	

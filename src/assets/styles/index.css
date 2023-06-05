@@ -19,7 +19,7 @@
 }
 
 body {
-  background: linear-gradient(#555, rgba(0, 0, 0, 0.1)) fixed;
+  background: linear-gradient(#040813, rgba(7, 20, 65, 0.9)) fixed;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   display: flex;
   justify-content: center;

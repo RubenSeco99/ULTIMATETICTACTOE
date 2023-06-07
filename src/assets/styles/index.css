@@ -5,8 +5,6 @@
 **********************************************/
 
 :root {
-  height: 100%;
-  width: 100%;
   --globalColor: #404487;
   --messageColor: rgb(11, 11, 241);
   --boxshadow0: 0px 0px 0px;
@@ -21,8 +19,6 @@
 }
 
 body {
-  height: 100%;
-  width: 100%;
   background: linear-gradient(#040813, rgba(7, 20, 65, 0.9)) fixed;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   display: flex;
@@ -32,10 +28,10 @@ body {
 select,
 label,
 dd,
-button {
-  padding: 5px;
+/* button {
+  padding: 8px;
   border-radius: 5px;
-}
+} */
 
 select,
 button {

@@ -3,7 +3,7 @@ import "./A9TabuleirosJogo.css";
 
 function NoveTabuleirosJogo(){
     return (
-        <section className="9TabuleirosJogo">
+        <section className="NoveTabuleirosJogo">
             
         </section>
     );

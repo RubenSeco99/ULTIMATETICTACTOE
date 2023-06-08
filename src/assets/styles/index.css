@@ -28,10 +28,10 @@ body {
 select,
 label,
 dd,
-button {
-  padding: 5px;
+/* button {
+  padding: 8px;
   border-radius: 5px;
-}
+} */
 
 select,
 button {

@@ -1,16 +1,18 @@
 #PainelJogo {
-    /* display: block; */
-    width: 300px;
-    height: 300px;
-    color: rgb(193, 193, 206);
-    background-color: rgb(105, 123, 172);
+    display: flex;
+    margin-top: 200px;
+    justify-content: center;
+    align-items: center;
+    width: 570px;
+    height: 570px;
+    background-color: rgb(255, 255, 255);
 }
 
  
 #NoveTabuleirosJogo{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
+    grid-gap: 6px;
     color: rgb(193, 193, 206);
 }
 
@@ -22,8 +24,10 @@
 }
 
 .Quadrados{
-    background-color: black;
+    background-color: rgba(7, 20, 65, 0.9);
+    font-size: 34px;
+    color: red;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
 }

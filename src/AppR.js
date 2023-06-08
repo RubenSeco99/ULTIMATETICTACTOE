@@ -1,6 +1,6 @@
 import "./assets/styles/AppR.css";
 
-function App() {
+function AppR() {
   return (
     <div id="container">
       <h2>Jogo de Memória em React</h2>

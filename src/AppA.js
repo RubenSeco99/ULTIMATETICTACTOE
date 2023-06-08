@@ -7,6 +7,7 @@ function AppA() {
     <div id="main">
       {/* <h2>Ultimate TIC TAC TOE em React</h2>
       <h3>Linguagens Script</h3> */}
+      
       <PainelJogo/>
     </div>
   );

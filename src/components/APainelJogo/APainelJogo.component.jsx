@@ -8,33 +8,33 @@ function PainelJogo({ player }) {
     const [currentPlayer, setCurrentPlayer] = useState("X");
   
     const handleButtonClick = (index) => {
-      const newButtonValues = [...buttonValues];
-      newButtonValues[index] = currentPlayer;
-      setButtonValues(newButtonValues);
-      setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
+        const newButtonValues = [...buttonValues];
+        newButtonValues[index] = currentPlayer;
+        setButtonValues(newButtonValues);
+        setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
     };
   
     return (
-      <section id="PainelJogo">
-        <div id="NoveTabuleirosJogo">
-          {[...Array(9)].map((_, tabIndex) => (
-            <div key={`TabuleiroJogo${tabIndex + 1}`} className="Tabuleiros">
-              {[...Array(9)].map((_, buttonIndex) => {
-                const index = tabIndex * 9 + buttonIndex;
-                return (
-                  <button
-                    key={`Quadrado${index + 1}`}
-                    className="Quadrados"
-                    onClick={() => handleButtonClick(index)}
-                  >
-                    {buttonValues[index]}
-                  </button>
-                );
-              })}
+        <section id="PainelJogo">
+            <div id="NoveTabuleirosJogo">
+                {[...Array(9)].map((_, tabIndex) => (
+                    <div key={`TabuleiroJogo${tabIndex + 1}`} className="Tabuleiros">
+                        {[...Array(9)].map((_, buttonIndex) => {
+                            const index = tabIndex * 9 + buttonIndex;
+                            return (
+                            <button
+                                key={`Quadrado${index + 1}`}
+                                className={`Quadrados Quadrados-${buttonValues[index]}`}
+                                onClick={() => handleButtonClick(index)}
+                            >
+                                {buttonValues[index]}
+                            </button>
+                            );
+                        })}
+                    </div>
+                ))}
             </div>
-          ))}
-        </div>
-      </section>
+        </section>
     );
   }
 

@@ -31,3 +31,11 @@
     width: 55px;
     height: 55px;
 }
+
+.Quadrados-X{
+    color: rgb(0, 192, 0);
+}
+
+.Quadrados-O{
+    color: rgb(47, 73, 190);
+}

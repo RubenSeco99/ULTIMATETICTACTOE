@@ -1,0 +1,10 @@
+.ButtonC{
+    margin: 15px 0px 50% 0px;
+    padding: 5px;
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+    background-color: brown;
+    border: 0px solid transparent;
+    border-radius: 10px;
+}

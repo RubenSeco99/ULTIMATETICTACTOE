@@ -1,0 +1,10 @@
+#IndiceC{
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*falta colocar a posição para o fundo*/
+    position: relative;
+    bottom: 0px;
+}

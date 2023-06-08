@@ -1,9 +1,9 @@
 COMPONENTES:
 ecra inicial
-	imagem ecra inicial (RUBEN)
+	imagem ecra inicial (RUBEN)✅
 	botão start (RUBEN)
 	ver top 10 (RUBEN)
-	INDICE (RUBEN)
+	INDICE (RUBEN)✅
 	
 -ver top 10
 	lista(nome e pontuação) (RUBEN)

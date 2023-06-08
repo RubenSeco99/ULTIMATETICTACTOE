@@ -1,11 +1,20 @@
 import "./assets/styles/AppR.css";
+import Indice from "./components/RIndice/RIndice.component";
+import ImagemJogo from "./components/RImagemEcraInicial/RImagemEcraInicial";
+import StartButton from "./components/RBotaoStart/RBotaoStart.component";
+import TopTenButton from "./components/RBotaoVerTop10/RBotaoVerTop10.component";
 
 function AppR() {
   return (
     <div id="container">
-      <h2>Jogo de Memória em React</h2>
-      <h3>Linguagens Script</h3>
+      <ImagemJogo/>
+      <TopTenButton></TopTenButton>
+    <StartButton></StartButton>
+      <footer id="Indice">
+      <Indice />
+    </footer>
     </div>
+    
   );
 }
 

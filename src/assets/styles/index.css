@@ -9,6 +9,8 @@
   --messageColor: rgb(11, 11, 241);
   --boxshadow0: 0px 0px 0px;
   --top10Color: #404487;
+  width: 100%;
+  height: 100%;
   --gameOverColor: #404487;
 }
 

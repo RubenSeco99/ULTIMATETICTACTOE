@@ -1,0 +1,44 @@
+.top-players-panel {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .top-players-panel h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .player-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .player-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .player-rank {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .player-name {
+    font-size: 12px;
+    padding-right: 15px;
+  }
+  
+  .player-score {
+    font-size: 10px;
+    color: #555;
+  }
+  .trophy-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  

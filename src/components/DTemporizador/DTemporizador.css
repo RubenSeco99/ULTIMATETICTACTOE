@@ -1,0 +1,25 @@
+.temporizador-container {
+    background-color: #e9ecef;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transform: scale(0.5);
+  }
+  
+  .temporizador-container.ativo {
+    background-color: #18bc9c;
+  }
+  
+  .temporizador-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .temporizador-container.ativo .temporizador-display {
+    color: #fff;
+  }
+  

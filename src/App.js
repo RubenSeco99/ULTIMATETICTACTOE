@@ -1,17 +1,36 @@
 import "./assets/styles/App.css";
-import APainelJogo from "./components/APainelJogo/APainelJogo.component";
+import React, { useState } from "react";
+import Indice from "./components/RIndice/RIndice.component";
+import ImagemJogo from "./components/RImagemEcraInicial/RImagemEcraInicial";
+import StartButton from "./components/RBotaoStart/RBotaoStart.component";
+import TopTenButton from "./components/RBotaoVerTop10/RBotaoVerTop10.component";
+import ModoDeJogo from "./components/DEcraModoJogo/DEcraModoJogo.component";
 
 function App() {
+  const [menu, setMenu] = useState("appRDisplay");
+  function changeMenu(event) {
+    //se se clicar no botao start game na pagina inicial mostra para a pagina de pedir dados
+      event.preventDefault();//garante que não acontece mais nada alem daquilo que queremos 
+      setMenu("appDDisplay");
+    
+  }
   return (
-    <div id="container">
-      <h2>Ultimate TIC TAC TOE em React</h2>
-      <h3>Linguagens Script</h3>
-      APainelJogo={APainelJogo}
+    <div id="main">
+        <div id="appRDisplay" style={{ display: menu === 'appDDisplay' ? 'none' : 'flex' }}>
+          <ImagemJogo />
+          <TopTenButton/>
+          <StartButton changeMenu={changeMenu}/>
+          <footer id="Indice">
+            <Indice />
+          </footer>
+        </div>
+      
+        <div id="appDDisplay" style={{ display: menu === 'appDDisplay' ? 'flex' : 'none' }}>
+          <ModoDeJogo />
+        </div>
+      
     </div>
   );
 }
 
 export default App;
-// Esta linha também poderia ser eliminada
-// e adefinição da funsão ser substituida 
-// export default function App() {

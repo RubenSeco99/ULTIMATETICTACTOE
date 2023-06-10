@@ -3,7 +3,7 @@
 *** Jogo de Memória em React
 *** Estilos App.js 
 **********************************************/
-#container {
+#appRDisplay {
     display: flex;
     flex-direction: column;
     margin: 20px 0 10px 0;

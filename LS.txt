@@ -1,16 +1,16 @@
 COMPONENTES:
 ecra inicial
 	imagem ecra inicial (RUBEN)✅
-	botão start (RUBEN)✅(falta colocar display none e a aparecer a os campos para introduzir)
-	ver top 10 (RUBEN)
+	botão start (RUBEN)✅
+	ver top 10 (RUBEN)//so esta o button
 	INDICE (RUBEN)✅
 	
 -ver top 10
 	lista(nome e pontuação) (RUBEN)
 	Botão retroceder	 (RUBEN)
 -botao start
-	ecrã :escolher player vs pc || player vs player (DAVI)
-	Painel Nome jogadores (DAVI)
+	ecrã :escolher player vs pc || player vs player (DAVI) ✅
+	Painel Nome jogadores (DAVI) 
 	ecrã modo jogo (DAVI)
 paineis jogo (AFONSO)
 	painel principal jogo(meio) (AFONSO)

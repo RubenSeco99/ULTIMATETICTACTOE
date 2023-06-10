@@ -28,7 +28,7 @@
   }
   
   .continue-button {
-    background-color: #4caf50;
+    background-color: brown;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -41,5 +41,5 @@
   }
   
   .continue-button:hover {
-    background-color: #388e3c;
+    background-color:  rgb(112, 29, 29);
   }

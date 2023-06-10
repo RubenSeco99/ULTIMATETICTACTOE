@@ -3,7 +3,7 @@ import  "./RBotaoVerTop10.css";
 
 
 function TopTenButton(){
-    return (<a className="TopTen">Top 10</a>)
+    return (<button className="TopTen">Top 10</button>)
 }
 
 export default TopTenButton;

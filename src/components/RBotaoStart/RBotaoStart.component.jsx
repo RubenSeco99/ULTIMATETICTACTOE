@@ -2,8 +2,13 @@ import React from "react";
 import  "./RBotaoStart.css";
 
 
-function StartButton(){
-    return (<a className="ButtonC">StartGame</a>)
+function StartButton({menu,changeMenu}){
+    return (
+    <button className="ButtonC" onClick={changeMenu}>
+        Start Game
+    </button>);
 }
 
+
 export default StartButton;
+

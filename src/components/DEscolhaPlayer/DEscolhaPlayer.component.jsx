@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DEscolhaPlayer.css";
 
-function QualONomeDoJogador() {
+function FormDados({twoPlayers}) {
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
   const [etapa, setEtapa] = useState(1);
@@ -28,7 +28,7 @@ function QualONomeDoJogador() {
     <div className="container">
       {etapa === 1 ? (
         <>
-          <div className="question">Quem é você?</div>
+          <div className="question">Introduza o nome do Jogador 1</div>
           <div className="input-box">
             <input
               type="text"
@@ -41,7 +41,7 @@ function QualONomeDoJogador() {
         </>
       ) : (
         <>
-          <div className="question">Quem é você?</div>
+          <div className="question">Introduza o nome do Jogador 2</div>
           <div className="input-box">
             <input
               type="text"
@@ -60,4 +60,4 @@ function QualONomeDoJogador() {
   );
 }
 
-export default QualONomeDoJogador;
+export default FormDados;

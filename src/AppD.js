@@ -6,9 +6,11 @@ import PainelJogadores from "./components/DPainelJogadores/DPainelJogadores.comp
 
 function AppD() {
     return (
-      <div>
-            
-      </div>
+      <div id ="appDDisplay">
+          <ModoDeJogo></ModoDeJogo>
+          <QualONomeDoJogador></QualONomeDoJogador>
+          <Temporizador></Temporizador>
+    </div>
     );
   }
   

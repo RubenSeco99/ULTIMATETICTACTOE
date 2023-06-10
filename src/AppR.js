@@ -20,5 +20,5 @@ function AppR() {
 
 export default AppR;
 // Esta linha também poderia ser eliminada
-// e adefinição da funsão ser substituida 
+// e adefinição da função ser substituida 
 // export default function App() {

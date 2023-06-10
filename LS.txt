@@ -1,7 +1,7 @@
 COMPONENTES:
 ecra inicial
 	imagem ecra inicial (RUBEN)✅
-	botão start (RUBEN)
+	botão start (RUBEN)✅(falta colocar display none e a aparecer a os campos para introduzir)
 	ver top 10 (RUBEN)
 	INDICE (RUBEN)✅
 	

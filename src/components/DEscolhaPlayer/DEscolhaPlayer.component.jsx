@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DEscolhaPlayer.css";
 
-function FormDados({twoPlayers}) {
+function FormDados({}) {
   const [jogador1, setJogador1] = useState("");
   const [jogador2, setJogador2] = useState("");
   const [etapa, setEtapa] = useState(1);
@@ -25,10 +25,12 @@ function FormDados({twoPlayers}) {
   };
 
   return (
-    <div className="container">
+    <div className="dadosForm">
       {etapa === 1 ? (
         <>
-          <div className="question">Introduza o nome do Jogador 1</div>
+          <div className="question">
+            Introduza o nome do Jogador 1
+          </div>
           <div className="input-box">
             <input
               type="text"
@@ -56,6 +58,16 @@ function FormDados({twoPlayers}) {
       <button className="continue-button" onClick={handleContinuar}>
         Continuar
       </button>
+      {/*<div className="question">
+            Introduza o nome do Jogador 1
+          </div>
+          <div className="input-box"> 
+            <input
+              type="text"
+              placeholder="Jogador 1"
+              value={jogador1}
+            />
+          </div>*/}
     </div>
   );
 }

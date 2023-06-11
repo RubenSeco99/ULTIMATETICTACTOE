@@ -36,9 +36,23 @@
     /*display: inline-block;*/
     font-size: 20px;
     border-radius: 8px;
-    cursor: pointer;
   }
   
   .continue-button:hover {
+    background-color:  rgb(112, 29, 29);
+  }
+  .dificulty-button{
+    background-color: brown;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 15px 5px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 20px;
+    border-radius: 8px;
+  }
+  .dificulty-button:hover {
     background-color:  rgb(112, 29, 29);
   }

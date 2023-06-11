@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./DEscolhaPlayer.css";
+import PainelJogo from "../APainelJogo/APainelJogo.component";
 
-function FormDados({}) {
-  const [jogador1, setJogador1] = useState("");
+function FormDados(props) {
+  const [jogador1, setJogador1] = useState(""); //guarda o nome dos jogadores
   const [jogador2, setJogador2] = useState("");
-  const [etapa, setEtapa] = useState(1);
+  const numberofplayers = props.twoPlayers;
+  const [advanceToForm, setAdvanceToForm] = useState(false);
+  const [dificulty, setDificulty] = useState("facil");
+  //console.log(numberofplayers);
+  // const [etapa, setEtapa] = useState(1);
 
-  const handleContinuar = () => {
+  /*const handleContinuar = () => {
     if (etapa === 1) {
       setEtapa(2);
     } else if (etapa === 2) {
@@ -16,33 +21,43 @@ function FormDados({}) {
       setJogador1("");
       setJogador2("");
     }
-  };
+  };*/
 
-  const handleKeyPress = (e) => {
+  /*const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleContinuar();
     }
-  };
+  };*/
+
+  function advance(event) {
+    event.preventDefault();
+    setAdvanceToForm(true);
+  }
+
+  function changeDificultyToHard(dificulty) {
+      setDificulty("dificil");
+  }
+  function changeDificultyToEasy(dificulty) {
+    setDificulty("facil");
+  }
 
   return (
     <div className="dadosForm">
-      {etapa === 1 ? (
-        <>
-          <div className="question">
-            Introduza o nome do Jogador 1
-          </div>
-          <div className="input-box">
-            <input
-              type="text"
-              placeholder="Jogador 1"
-              value={jogador1}
-              onChange={(e) => setJogador1(e.target.value)}
-              onKeyDown={handleKeyPress}
-            />
-          </div>
-        </>
-      ) : (
-        <>
+      <div style={{ display: advanceToForm === false ? "block" : "none" }}>
+        <div className="question">Introduza o nome do Jogador 1</div>
+        <div className="input-box">
+          <input
+            type="text"
+            placeholder="Jogador 1"
+            value={jogador1}
+            onChange={(e) => setJogador1(e.target.value)}//identifica a tecla utilizada , e funciona em conjunto com a funcao seguinte
+            //onKeyDown={handleKeyPress}//permite que o utilizador use o enter em vez de ter de clicar manualmente no botão continuar
+          />
+        </div>
+        <div
+          className="wrapplayer2"
+          style={{ display: numberofplayers === true ? "block" : "none" }}
+        >
           <div className="question">Introduza o nome do Jogador 2</div>
           <div className="input-box">
             <input
@@ -50,24 +65,28 @@ function FormDados({}) {
               placeholder="Jogador 2"
               value={jogador2}
               onChange={(e) => setJogador2(e.target.value)}
-              onKeyDown={handleKeyPress}
+              //onKeyDown={handleKeyPress}
             />
           </div>
-        </>
-      )}
-      <button className="continue-button" onClick={handleContinuar}>
-        Continuar
-      </button>
-      {/*<div className="question">
-            Introduza o nome do Jogador 1
-          </div>
-          <div className="input-box"> 
-            <input
-              type="text"
-              placeholder="Jogador 1"
-              value={jogador1}
-            />
-          </div>*/}
+        </div>
+        <div id="dificuldade">
+          <div className="question">Escolha a dificuldade</div>
+          <button className="dificulty-button" onClick={changeDificultyToEasy}>
+            Fácil
+          </button>
+          <button className="dificulty-button" onClick={changeDificultyToHard}>
+            Difícil
+          </button>
+        </div>
+        <button className="continue-button" onClick={advance}>
+          Continuar
+        </button>
+      </div>
+      {advanceToForm && <PainelJogo 
+                            numberofplayers={numberofplayers} 
+                            jogador1={jogador1}
+                            jogador2={jogador2}
+                            dificulty={dificulty} />}
     </div>
   );
 }

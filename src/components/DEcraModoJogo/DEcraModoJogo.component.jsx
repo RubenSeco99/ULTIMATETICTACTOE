@@ -28,7 +28,7 @@ function ModoDeJogo() {//escolha de player vs player ou playver vs pc,leva a pre
           <button className="modo-jogo-button" onClick={advance} style={{ display: advanceToForm === false ? 'flex' : 'none' }}>
             Player Vs Pc
           </button>
-          {advanceToForm && <FormDados numberofplayers={twoPlayers} />}
+          {advanceToForm && <FormDados twoPlayers={twoPlayers} />}
         </div>
   );
 }

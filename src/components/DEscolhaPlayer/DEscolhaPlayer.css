@@ -30,7 +30,7 @@
   }
   
   .continue-button {
-    background-color: brown;
+    background: linear-gradient(#185a9d,#35a582);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -42,10 +42,10 @@
   }
   
   .continue-button:hover {
-    background-color:  rgb(112, 29, 29);
+    background: linear-gradient(#13477a,#26795e);
   }
   .dificulty-button{
-    background-color: brown;
+    background: linear-gradient(#185a9d,#35a582);
     color: #fff;
     border: none;
     padding: 10px 20px;

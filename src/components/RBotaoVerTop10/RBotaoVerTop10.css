@@ -5,7 +5,7 @@
   color: white;
   font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: brown;
+  background: linear-gradient(#185a9d,#35a582);
   border: 0px solid transparent;
   border-radius: 10px;
 }

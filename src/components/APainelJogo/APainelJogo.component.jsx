@@ -3,7 +3,7 @@ import "./APainelJogo.css";
 // import NoveTabuleirosJogo from "../components/A9TabuleirosJogo/A9TabuleirosJogo.component";
 // import NoveTabuleirosJogo from "src\components\A9TabuleirosJogo\A9TabuleirosJogo.jsx";
 
-function PainelJogo({ player1, player2 }) {
+function PainelJogo(props) {
     const CombinacoesPossiveis1_X = ['X', 'X', 'X', null, null, null, null, null, null];
     const CombinacoesPossiveis2_X = [null, null, null, 'X', 'X', 'X', null, null, null];
     const CombinacoesPossiveis3_X = [null, null, null, null, null, null, 'X', 'X', 'X'];
@@ -112,6 +112,10 @@ function PainelJogo({ player1, player2 }) {
     };
 
     return (
+        <div id="mainPage">
+        <section id="dataFromForm">
+            <h1>dataFromForm</h1>
+        </section>
         <section id="PainelJogo">
             <div id="NoveTabuleirosJogo">
                 {[...Array(9)].map((_, tabIndex) => {
@@ -144,6 +148,10 @@ function PainelJogo({ player1, player2 }) {
                 })}
             </div>
         </section>
+        <section id="atualTopTen">
+        <h1>atualTopTen</h1>
+        </section>
+        </div>
     );
   }
   {/* {[...Array(9)].map((_, tabIndex) => (

@@ -8,6 +8,7 @@ function FormDados(props) {
   const numberofplayers = props.twoPlayers;
   const [advanceToForm, setAdvanceToForm] = useState(false);
   const [dificulty, setDificulty] = useState("facil");
+  const data = [{numberofplayers,jogador1,jogador2,dificulty}];
   //console.log(numberofplayers);
   // const [etapa, setEtapa] = useState(1);
 
@@ -83,10 +84,10 @@ function FormDados(props) {
         </button>
       </div>
       {advanceToForm && <PainelJogo 
-                            numberofplayers={numberofplayers} 
-                            jogador1={jogador1}
-                            jogador2={jogador2}
-                            dificulty={dificulty} />}
+                            numberofplayers={data.numberofplayers} 
+                            jogador1={data.jogador1}
+                            jogador2={data.jogador2}
+                            dificulty={data.dificulty} />}
     </div>
   );
 }

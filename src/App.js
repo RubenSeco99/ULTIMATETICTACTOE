@@ -28,7 +28,7 @@ function App() {
         <div id="appDDisplay" style={{ display: menu === 'appDDisplay' ? 'flex' : 'none' }}>
           <ModoDeJogo />
         </div>
-      
+
     </div>
   );
 }

@@ -56,6 +56,19 @@
     color: rgb(193, 193, 206);
 }
 
+.Winner-O{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 169px;
+    height: 169px;
+    font-size: 110px;
+    /*background-color: rgba(7, 20, 65, 0.9);*/
+    background: linear-gradient(#212e3b54,#abb1b4 );
+    border-radius: 25px;
+    color: rgb(47, 73, 190);
+}
+
 .Tabuleiros{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

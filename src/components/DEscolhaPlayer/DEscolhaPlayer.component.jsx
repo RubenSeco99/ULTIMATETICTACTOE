@@ -32,9 +32,16 @@ function FormDados(props) {
 
   function advance(event) {
     event.preventDefault();
-    setAdvanceToForm(true);
+    if(jogador1 !== "" ){
+      if(numberofplayers===true && jogador2 !==""){
+        setAdvanceToForm(true);
+      }
+      if(numberofplayers===false){
+        setAdvanceToForm(true);
+      }
+    
+    }
   }
-
   function changeDificultyToHard(dificulty) {
       setDificulty("dificil");
   }
@@ -55,10 +62,7 @@ function FormDados(props) {
             //onKeyDown={handleKeyPress}//permite que o utilizador use o enter em vez de ter de clicar manualmente no botão continuar
           />
         </div>
-        <div
-          className="wrapplayer2"
-          style={{ display: numberofplayers === true ? "block" : "none" }}
-        >
+        <div className="wrapplayer2" style={{ display: numberofplayers === true ? "block" : "none" }}>
           <div className="question">Introduza o nome do Jogador 2</div>
           <div className="input-box">
             <input
@@ -72,10 +76,10 @@ function FormDados(props) {
         </div>
         <div id="dificuldade">
           <div className="question">Escolha a dificuldade</div>
-          <button className="dificulty-button" onClick={changeDificultyToEasy}>
+          <button id="easy-button" className={`dificulty-button ${dificulty === "facil" ? "choosenDificulty" : ""}`} onClick={changeDificultyToEasy}>
             Fácil
           </button>
-          <button className="dificulty-button" onClick={changeDificultyToHard}>
+          <button id="hard-button" className={`dificulty-button ${dificulty === "dificil" ? "choosenDificulty" : ""}`} onClick={changeDificultyToHard}>
             Difícil
           </button>
         </div>

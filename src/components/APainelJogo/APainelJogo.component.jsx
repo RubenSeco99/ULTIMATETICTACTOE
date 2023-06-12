@@ -25,6 +25,7 @@ function PainelJogo(props) {
 
     const [buttonValues, setButtonValues] = useState(Array(81).fill(null));
     const [winsMainTab, setWinsMainTab] = useState(Array(9).fill(null));
+    const [winner, setWinner] = useState(null);
     const [currentPlayer, setCurrentPlayer] = useState("X");
     const [fulFilled, setFulFilled] = useState(false);
     
@@ -88,12 +89,29 @@ function PainelJogo(props) {
         }
     }
 
-    // const changeMainGame = () => {
+    const checkWinsMainGame = (currentPlayer, TabNumber) => {
+        const selectedElements = winsMainTab;
+        if(currentPlayer === "X"){
+            for (let i = 1; i <= 8; i++) {
+                const combinacao = eval(`CombinacoesPossiveis${i}_X`); // Get the CombinacoesPossiveis array dynamically
 
-    // }
-
-    const checkWinsMainGame = (currentPlayer) => {
-
+                if (compareArrays(selectedElements, combinacao)) {
+                    console.log(`Match found with CombinacoesPossiveis${i}_X`);
+                    setWinner = ("X");
+                }
+                
+            }
+        }
+        if(currentPlayer === "O"){
+            for (let i = 1; i <= 8; i++) {
+                const combinacao = eval(`CombinacoesPossiveis${i}_O`); // Get the CombinacoesPossiveis array dynamically
+    
+                if (compareArrays(selectedElements, combinacao)) {
+                    console.log(`Match found with CombinacoesPossiveis${i}_O`);
+                    setWinner = ("O");
+                }
+            }
+        }
     }
 
     const handleButtonClick = (index, currentPlayer) => {
@@ -102,9 +120,9 @@ function PainelJogo(props) {
             const newButtonValues = [...buttonValues];
             newButtonValues[index] = currentPlayer;
             setButtonValues(newButtonValues);
-            const TabNumber = Math.floor(index / 9) + 1;                          //Calcula o numbero do tabuleiro onde foi jogado de 1 a 9
+            const TabNumber = Math.floor(index / 9) + 1;    //Calcula o numbero do tabuleiro onde foi jogado de 1 a 9
             {checkWins(currentPlayer, TabNumber)};
-            {checkWinsMainGame(currentPlayer)};
+            {checkWinsMainGame(currentPlayer, TabNumber)};
             setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
         }
         // console.log(buttonValues);
@@ -125,60 +143,104 @@ function PainelJogo(props) {
             </div>
         </section>
         <section id="PainelJogo">
-            <div id="NoveTabuleirosJogo">
-                {[...Array(9)].map((_, tabIndex) => {
-                    const tabuleiroValue = winsMainTab[tabIndex];
-                    if(tabuleiroValue === null){
-                        return (
-                            <div key={`TabuleiroJogo${tabIndex + 1}`} className="Tabuleiros">
-                                {[...Array(9)].map((_, buttonIndex) => {
-                                    const index = tabIndex * 9 + buttonIndex;
-                                    return (
-                                        <button
-                                            key={`Quadrado${index + 1}`}
-                                            className={`Quadrados Quadrados-${buttonValues[index]}`}
-                                            onClick={() => handleButtonClick(index, currentPlayer)}
-                                        >
-                                            {buttonValues[index]}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        );
-                        
-                    } else {
-                        return (
-                            <div key={`TabuleiroJogo${tabIndex + 1}`} className={`Tabuleiros Tabuleiros-${tabuleiroValue}`}>
-                                {tabuleiroValue}
-                            </div>
-                        );
-                    }
-                })}
-            </div>
+            const winnerValues = winner;
+            if(winnerValues === null) {
+                <div id="NoveTabuleirosJogo">
+                    {[...Array(9)].map((_, tabIndex) => {
+                        const tabuleiroValue = winsMainTab[tabIndex];
+                        if(tabuleiroValue === null){
+                            return (
+                                <div key={`TabuleiroJogo${tabIndex + 1}`} className="Tabuleiros">
+                                    {[...Array(9)].map((_, buttonIndex) => {
+                                        const index = tabIndex * 9 + buttonIndex;
+                                        return (
+                                            <button
+                                                key={`Quadrado${index + 1}`}
+                                                className={`Quadrados Quadrados-${buttonValues[index]}`}
+                                                onClick={() => handleButtonClick(index, currentPlayer)}
+                                            >
+                                                {buttonValues[index]}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            );
+                            
+                        } else {
+                            return (
+                                <div key={`TabuleiroJogo${tabIndex + 1}`} className={`Tabuleiros Tabuleiros-${tabuleiroValue}`}>
+                                    {tabuleiroValue}
+                                </div>
+                            );
+                        }
+                    })}
+                </div>
+            } else {
+                <div>
+                    return (
+                        <div key={`Winner`} className={`Winner-${winner}`}>
+                            {winner}
+                        </div>
+                    );
+                </div>
+            }
         </section>
         <section id="atualTopTen">
-        <h1>Top 10:</h1>
+            <h1>Top 10:</h1>
         </section>
         </div>
     );
+    // return (
+    //     <div id="mainPage">
+    //     <section id="dataFromForm">
+    //         <h1>Ultimate Tic Tac Toe</h1>
+    //         <div id="recolha_dados">
+    //                 <a>Jogador 1:</a>
+    //                 <a>{props.jogador1}</a>
+    //                 <a style={{ display: props.numberofplayers === true ? "block" : "none" }}>Jogador 2:</a>
+    //                 <a>{props.jogador2}</a>
+    //                 <a>Dificuldade:</a>
+    //                 <a>{props.dificulty}</a>
+    //         </div>
+    //     </section>
+    //     <section id="PainelJogo">
+    //         <div id="NoveTabuleirosJogo">
+    //             {[...Array(9)].map((_, tabIndex) => {
+    //                 const tabuleiroValue = winsMainTab[tabIndex];
+    //                 if(tabuleiroValue === null){
+    //                     return (
+    //                         <div key={`TabuleiroJogo${tabIndex + 1}`} className="Tabuleiros">
+    //                             {[...Array(9)].map((_, buttonIndex) => {
+    //                                 const index = tabIndex * 9 + buttonIndex;
+    //                                 return (
+    //                                     <button
+    //                                         key={`Quadrado${index + 1}`}
+    //                                         className={`Quadrados Quadrados-${buttonValues[index]}`}
+    //                                         onClick={() => handleButtonClick(index, currentPlayer)}
+    //                                     >
+    //                                         {buttonValues[index]}
+    //                                     </button>
+    //                                 );
+    //                             })}
+    //                         </div>
+    //                     );
+                        
+    //                 } else {
+    //                     return (
+    //                         <div key={`TabuleiroJogo${tabIndex + 1}`} className={`Tabuleiros Tabuleiros-${tabuleiroValue}`}>
+    //                             {tabuleiroValue}
+    //                         </div>
+    //                     );
+    //                 }
+    //             })}
+    //         </div>
+    //     </section>
+    //     <section id="atualTopTen">
+    //     <h1>Top 10:</h1>
+    //     </section>
+    //     </div>
+    // );
   }
-  {/* {[...Array(9)].map((_, tabIndex) => (
-                            <div key={`TabuleiroJogo${tabIndex + 1}`} className="Tabuleiros">
-                                {[...Array(9)].map((_, buttonIndex) => {
-                                    const index = tabIndex * 9 + buttonIndex;
-                                    return (
-                                    <button
-                                        key={`Quadrado${index + 1}`}
-                                        className={`Quadrados Quadrados-${buttonValues[index]}`}
-                                        onClick={() => handleButtonClick(index, currentPlayer, setWinsMainTab)}
-                                    >
-                                        {buttonValues[index]}
-                                    </button>
-                                    );
-                                })}
-                            </div>
-                        ))} */}
-
 export default PainelJogo;
 
 // import React, { useEffect, useState } from "react";

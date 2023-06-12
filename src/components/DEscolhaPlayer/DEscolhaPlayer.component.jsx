@@ -3,12 +3,12 @@ import "./DEscolhaPlayer.css";
 import PainelJogo from "../APainelJogo/APainelJogo.component";
 
 function FormDados(props) {
+  const numberofplayers = props.twoPlayers;
   const [jogador1, setJogador1] = useState(""); //guarda o nome dos jogadores
   const [jogador2, setJogador2] = useState("");
-  const numberofplayers = props.twoPlayers;
   const [advanceToForm, setAdvanceToForm] = useState(false);
   const [dificulty, setDificulty] = useState("facil");
-  const data = [{numberofplayers,jogador1,jogador2,dificulty}];
+  const data = {numberofplayers,jogador1,jogador2,dificulty};
   //console.log(numberofplayers);
   // const [etapa, setEtapa] = useState(1);
 

@@ -25,7 +25,6 @@
     height:92%;
     margin:4% 1%;
     background: linear-gradient(#212e3b54,#abb1b4 );
-    border-radius: 25px;
 }
 
 #PainelJogo {
@@ -39,6 +38,14 @@
    border-radius:50px;
 }
  
+#recolha_dados{
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    margin-left: 20%;
+}
+
+
 #NoveTabuleirosJogo{
     display: grid;
     justify-items: center;

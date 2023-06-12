@@ -114,7 +114,15 @@ function PainelJogo(props) {
     return (
         <div id="mainPage">
         <section id="dataFromForm">
-            <h1>dataFromForm</h1>
+            <h1>Ultimate Tic Tac Toe</h1>
+            <div id="recolha_dados">
+                    <a>Jogador 1:</a>
+                    <a>{props.jogador1}</a>
+                    <a style={{ display: props.numberofplayers === true ? "block" : "none" }}>Jogador 2:</a>
+                    <a>{props.jogador2}</a>
+                    <a>Dificuldade:</a>
+                    <a>{props.dificulty}</a>
+            </div>
         </section>
         <section id="PainelJogo">
             <div id="NoveTabuleirosJogo">
@@ -149,7 +157,7 @@ function PainelJogo(props) {
             </div>
         </section>
         <section id="atualTopTen">
-        <h1>atualTopTen</h1>
+        <h1>Top 10:</h1>
         </section>
         </div>
     );

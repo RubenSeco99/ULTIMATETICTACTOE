@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./APainelJogo.css";
-// import NoveTabuleirosJogo from "../components/A9TabuleirosJogo/A9TabuleirosJogo.component";
-// import NoveTabuleirosJogo from "src\components\A9TabuleirosJogo\A9TabuleirosJogo.jsx";
 
 function PainelJogo(props) {
     const CombinacoesPossiveis1_X = ['X', 'X', 'X', null, null, null, null, null, null];
@@ -28,11 +26,21 @@ function PainelJogo(props) {
     const [winner, setWinner] = useState(null);
     const [currentPlayer, setCurrentPlayer] = useState("X");
     const [fulFilled, setFulFilled] = useState(false);
+    const [tabNumber, setTabNumber] = useState(10);
 
-    // useEffect(() => {
-    //     // checkWins(buttonValues);
-    //     console.log(buttonValues);
-    // }, [buttonValues]);
+
+    useEffect(() => {
+        if (checkWins(currentPlayer)) {
+            const updatedWinsMainTab = [...winsMainTab]; // Create a copy of the winsMainTab array
+            updatedWinsMainTab[tabNumber - 1] = currentPlayer; // Update the specific element in the array
+            setWinsMainTab(updatedWinsMainTab); // Update the winsMainTab array with the updated array
+            return;
+        }
+        if (checkWinsMainGame(currentPlayer)) {
+            setWinner(currentPlayer);
+            return;
+        }
+    }, [buttonValues]);      
 
     const compareArrays = (array1, array2) => {
         for (let i = 0; i < 9; i++) {
@@ -44,83 +52,77 @@ function PainelJogo(props) {
     };
 
     //Função para ver so ocorreu uma vitorias no X ou no O 
-    const checkWins = (currentPlayer, TabNumber) => {
-        const slicedIndex = (TabNumber-1)*9;
+    const checkWins = (currentPlayer) => {
+        const slicedIndex = (tabNumber-1)*9;
         const selectedElements = buttonValues.slice(slicedIndex, slicedIndex+9);
         // console.log(selectedElements);
         if(currentPlayer === "X"){
             for (let i = 1; i <= 8; i++) {
-                const combinacao = eval(`CombinacoesPossiveis${i}_X`); // Get the CombinacoesPossiveis array dynamically
-
+                const combinacao = eval(`CombinacoesPossiveis${i}_X`); 
                 if (compareArrays(selectedElements, combinacao)) {
                     console.log(`Match found with CombinacoesPossiveis${i}_X`);
                     // Do something when a match is found
                     const updatedArray = [...winsMainTab];
-                    updatedArray[TabNumber-1] = "X";
+                    updatedArray[tabNumber-1] = "X";
                     setWinsMainTab(updatedArray);
-                    // return setWinsMainTab;
+                    return true;
                 }
-                
             }
         }
         if(currentPlayer === "O"){
             for (let i = 1; i <= 8; i++) {
-                const combinacao = eval(`CombinacoesPossiveis${i}_O`); // Get the CombinacoesPossiveis array dynamically
-    
+                const combinacao = eval(`CombinacoesPossiveis${i}_O`); 
                 if (compareArrays(selectedElements, combinacao)) {
                     console.log(`Match found with CombinacoesPossiveis${i}_O`);
                     // Do something when a match is found
                     const updatedArray = [...winsMainTab];
-                    updatedArray[TabNumber-1] = "O";
+                    updatedArray[tabNumber-1] = "O";
                     setWinsMainTab(updatedArray);
-                    // return setWinsMainTab;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
-    const checkWinsMainGame = (currentPlayer, TabNumber) => {
-        const selectedElements = winsMainTab;
+    const checkWinsMainGame = (currentPlayer) => {
+        const selectedElements = [...winsMainTab];
         if(currentPlayer === "X"){
             for (let i = 1; i <= 8; i++) {
-                const combinacao = eval(`CombinacoesPossiveis${i}_X`); // Get the CombinacoesPossiveis array dynamically
+                const combinacao = eval(`CombinacoesPossiveis${i}_X`); 
                 if (compareArrays(selectedElements, combinacao)) {
                     console.log(`Match found with CombinacoesPossiveis${i}_X`);
-                    setWinner = ("X");
+                    setWinner("X");
+                    return true;
                 }
             }
         }
         if(currentPlayer === "O"){
             for (let i = 1; i <= 8; i++) {
-                const combinacao = eval(`CombinacoesPossiveis${i}_O`); // Get the CombinacoesPossiveis array dynamically
-    
+                const combinacao = eval(`CombinacoesPossiveis${i}_O`); 
                 if (compareArrays(selectedElements, combinacao)) {
                     console.log(`Match found with CombinacoesPossiveis${i}_O`);
-                    setWinner = ("O");
+                    setWinner("O");
+                    return true;
                 }
             }
         }
+        return false;
     }
 
-    const handleButtonClick = (index, currentPlayer, buttonValues) => {
-        if(buttonValues[index] == null){
+    const handleButtonClick = (index, currentPlayer) => {
+        if(buttonValues[index] === null){
             setFulFilled(true);
             const newButtonValues = [...buttonValues];
             newButtonValues[index] = currentPlayer;
             setButtonValues(newButtonValues);
-            const TabNumber = Math.floor(index / 9) + 1;    //Calcula o numbero do tabuleiro onde foi jogado de 1 a 9
-            {checkWins(currentPlayer, TabNumber, buttonValues)};
-            {checkWinsMainGame(currentPlayer, TabNumber, buttonValues)};
+            setTabNumber(Math.floor(index / 9) + 1);    //Calcula o numbero do tabuleiro onde foi jogado de 1 a 9
+            {checkWins(currentPlayer)};
+            {checkWinsMainGame(currentPlayer)};
             setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
-            // return buttonValues;
+            console.log(buttonValues);
         }
-        // console.log(buttonValues);
-        // console.log(winsMainTab);
     };
-
-    // useEffect(() => {
-    //     console.log("O array foi mudado");
-    // }, [buttonValues, winsMainTab, winner])
 
     return (
         <div id="mainPage">
@@ -149,7 +151,7 @@ function PainelJogo(props) {
                                         <button
                                             key={`Quadrado${index + 1}`}
                                             className={`Quadrados Quadrados-${buttonValues[index]}`}
-                                            onClick={handleButtonClick(index, currentPlayer, buttonValues)}
+                                            onClick={() => handleButtonClick(index, currentPlayer)}
                                         >
                                         {buttonValues[index]}
                                     </button>

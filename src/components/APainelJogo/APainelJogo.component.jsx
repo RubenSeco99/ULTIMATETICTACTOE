@@ -52,10 +52,11 @@ function PainelJogo(props) {
 
     //Função para ver so ocorreu uma vitorias no X ou no O 
     const checkWins = (currentPlayer) => {
+        var win=0;
         const slicedIndex = (tabNumber-1)*9;
         const selectedElements = buttonValues.slice(slicedIndex, slicedIndex+9);
         // console.log(selectedElements);
-        if(currentPlayer === "X"){
+       
             for (let i = 1; i <= 8; i++) {
                 const combinacao = eval(`CombinacoesPossiveis${i}_X`); 
                 if (compareArrays(selectedElements, combinacao)) {
@@ -63,11 +64,11 @@ function PainelJogo(props) {
                     const updatedArray = [...winsMainTab];
                     updatedArray[tabNumber-1] = "X";
                     setWinsMainTab(updatedArray);
-                    return true;
+                    win=1;
                 }
             }
-        }
-        if(currentPlayer === "O"){
+            if(win==1){return true;}
+    
             for (let i = 1; i <= 8; i++) {
                 const combinacao = eval(`CombinacoesPossiveis${i}_O`); 
                 if (compareArrays(selectedElements, combinacao)) {
@@ -75,35 +76,36 @@ function PainelJogo(props) {
                     const updatedArray = [...winsMainTab];
                     updatedArray[tabNumber-1] = "O";
                     setWinsMainTab(updatedArray);
-                    return true;
+                    win=1;
+                    
                 }
             }
-        }
+            if(win==1){return true;}
+        
         return false;
     }
 
     const checkWinsMainGame = (currentPlayer) => {
         const selectedElements = [...winsMainTab];
-        if(currentPlayer === "X"){
+        var win=0;
             for (let i = 1; i <= 8; i++) {
                 const combinacao = eval(`CombinacoesPossiveis${i}_X`); 
                 if (compareArrays(selectedElements, combinacao)) {
                     console.log(`Match found with CombinacoesPossiveis${i}_X`);
                     setWinner("X");
-                    return true;
+                    win=1;
                 }
             }
-        }
-        if(currentPlayer === "O"){
+            if(win==1){return true;}
             for (let i = 1; i <= 8; i++) {
                 const combinacao = eval(`CombinacoesPossiveis${i}_O`); 
                 if (compareArrays(selectedElements, combinacao)) {
                     console.log(`Match found with CombinacoesPossiveis${i}_O`);
                     setWinner("O");
-                    return true;
+                    win=1;
                 }
             }
-        }
+            if(win==1){return true;}
         return false;
     }
 
@@ -113,9 +115,9 @@ function PainelJogo(props) {
             const newButtonValues = [...buttonValues];
             newButtonValues[index] = currentPlayer;
             setButtonValues(newButtonValues);
-            setTabNumber(Math.floor(index / 9) + 1);    //Calcula o numbero do tabuleiro onde foi jogado de 1 a 9
-            {checkWins(currentPlayer)};
-            {checkWinsMainGame(currentPlayer)};
+            setTabNumber(Math.floor(index / 9) + 1);    //Calcula o numero do tabuleiro onde foi jogado de 1 a 9
+            checkWins(currentPlayer);
+            checkWinsMainGame(currentPlayer);
             setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
             console.log(buttonValues);
         }

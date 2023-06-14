@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./APainelJogo.css";
+import Temporizador from "../DTemporizador/DTemporizador.component";
 
 function PainelJogo(props) {
   const CombinacoesPossiveis1_X = [
@@ -331,6 +332,10 @@ function PainelJogo(props) {
           <a>{props.jogador2}</a>
           <a>Dificuldade:</a>
           <a>{props.dificulty}</a>
+          <a>Jogador Atual:{currentPlayer}</a>
+          <a>{props.dificulty == 'facil' ?(
+                        <Temporizador tempo = {120}/>
+                    ) : (<Temporizador tempo ={60}/>)} </a>
         </div>
       </section>
       <section id="PainelJogo">

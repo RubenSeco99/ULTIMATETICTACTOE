@@ -9,26 +9,6 @@ function FormDados(props) {
   const [advanceToForm, setAdvanceToForm] = useState(false);
   const [dificulty, setDificulty] = useState("facil");
   const data = {numberofplayers,jogador1,jogador2,dificulty};
-  //console.log(numberofplayers);
-  // const [etapa, setEtapa] = useState(1);
-
-  /*const handleContinuar = () => {
-    if (etapa === 1) {
-      setEtapa(2);
-    } else if (etapa === 2) {
-      console.log("Nome do jogador 1:", jogador1);
-      console.log("Nome do jogador 2:", jogador2);
-      setEtapa(1);
-      setJogador1("");
-      setJogador2("");
-    }
-  };*/
-
-  /*const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleContinuar();
-    }
-  };*/
 
   function advance(event) {
     event.preventDefault();

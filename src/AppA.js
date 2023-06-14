@@ -1,6 +1,6 @@
 import "./assets/styles/AppA.css";
-import PainelJogo from "./components/APainelJogo/APainelJogo.component";
-// import NoveTabuleirosJogo from "./components/A9TabuleirosJogo/A9TabuleirosJogo.component";
+import Temporizador from "./components/DTemporizador/DTemporizador.component";
+// import PainelJogo from "./components/APainelJogo/APainelJogo.component";
 
 function AppA() {
   return (
@@ -8,7 +8,8 @@ function AppA() {
       {/* <h2>Ultimate TIC TAC TOE em React</h2>
       <h3>Linguagens Script</h3> */}
       
-      <PainelJogo/>
+      {/* <PainelJogo/> */}
+      {/* <Temporizador></Temporizador> */}
     </div>
   );
 }

@@ -216,7 +216,7 @@ function PainelJogo(props) {
 },[winsMainTab]);
 
   useEffect(() =>{
-    if(props.numberofplayers == false && ((currentPlayer !== props.jogador1Simbolo) && pcPlays== true)  ){
+    if(props.numberofplayers == false && ((currentPlayer != props.jogador1Simbolo)  && pcPlays== true )  ){//assim nao joga inicialmente porem se tirar o pcPlays == true joga 2 vezes
       var donePlay =0;//se a jogada for bem sucedida a variavel vai incrementar e sair do ciclo senao continua a testar até encontrar uma jogada valida
         do{
           const botPlay = Math.floor(Math.random() * 81);
@@ -406,14 +406,14 @@ function PainelJogo(props) {
           <a>{props.dificulty}</a>
           <a>Jogador Atual:{currentPlayer}</a>
           <a>{props.dificulty == 'facil' ?(
-                        <Temporizador tempo={555} changeTime={props.changeTime} changeGameOn={props.changeGameOn} empate={empate} winsMainTab={winsMainTab}/>
+                        <Temporizador tempo={120} changeTime={props.changeTime} changeGameOn={props.changeGameOn} empate={empate} winsMainTab={winsMainTab}/>
                     ) : (<Temporizador tempo={60} changeTime={props.changeTime} changeGameOn={props.changeGameOn}/>)} </a>
-          <a>Vencedor:</a>
+          <a>Resultado:</a>
           <a>{winner}</a>
-          <a>Tabuleiros ganhos por X:</a>
+          {/*<a>Tabuleiros ganhos por X:</a>
           <a>{decisiveX}</a>
           <a>Tabuleiros ganhos por O:</a>
-          <a>{decisiveO}</a>
+          <a>{decisiveO}</a>*/}
         </div>
       </section>
       <section id="PainelJogo">

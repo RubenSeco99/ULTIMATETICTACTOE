@@ -10,16 +10,16 @@ function FormDados(props) {
   const [dificulty, setDificulty] = useState("facil");
   const [choosenPlayer, setChoosenPlayer] = useState("");//ESCOLHER QUAL O PRIMEIRO simbolo a jogar
   const [jogador1Simbolo, setJogador1Simbolo] = useState("");//saber qual o simbolo do jogador1 consequentemente o outro é o do jogador2/PC
-  const changeGameOn=props.changeGameOn;
   const changeTime=props.changeTime;
-  const data = {numberofplayers,jogador1,jogador2,dificulty,choosenPlayer,jogador1Simbolo,changeGameOn,changeTime};
+  const changeGameOn=props.changeGameOn;
+  const data = {numberofplayers,jogador1,jogador2,dificulty,choosenPlayer,jogador1Simbolo,changeTime,changeGameOn};
 
   function sortearSimbolo()
   {
     const players = ["X", "O"];
-    const randomIndex = Math.floor(Math.random() * 1);
+    const randomIndex = Math.floor(Math.random() * 2);
     setChoosenPlayer(players[randomIndex]);
-    const playerIndex = Math.floor(Math.random() * 1);
+    const playerIndex = Math.floor(Math.random() * 2);
     setJogador1Simbolo(playerIndex);
   }
 
@@ -88,9 +88,10 @@ function FormDados(props) {
                             jogador2={data.jogador2}
                             dificulty={data.dificulty}
                             choosenPlayer={data.choosenPlayer}
+                            jogador1Simbolo={data.jogador1Simbolo}
                             changeTime={data.changeTime}
                             changeGameOn={data.changeGameOn}
-                            jogador1Simbolo={data.jogador1Simbolo} />}
+                             />}
     </div>
   );
 }

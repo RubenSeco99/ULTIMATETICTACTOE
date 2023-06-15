@@ -22,4 +22,10 @@
   .temporizador-container.ativo .temporizador-display {
     color: #fff;
   }
+
+  .tempo-restante{
+    font-size: 44px;
+    font-weight: bold;
+    color: #000;
+  }
   

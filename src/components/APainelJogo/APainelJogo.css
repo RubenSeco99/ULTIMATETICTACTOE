@@ -80,6 +80,18 @@
     border-radius: 25px;
     color: rgb(0, 192, 0);
 }
+.Winner-empate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 540px;
+    height: 540px;
+    font-size: 110px;
+    /*background-color: rgba(7, 20, 65, 0.9);*/
+    background: linear-gradient(#212e3b54,#abb1b4 );
+    border-radius: 25px;
+    color: rgb(252, 152, 3);
+}
 
 .Tabuleiros{
     display: grid;
@@ -101,6 +113,7 @@
     border-radius: 25px;
     color: rgb(0, 192, 0);
 }
+
 
 .Tabuleiros-O{
     display: flex;

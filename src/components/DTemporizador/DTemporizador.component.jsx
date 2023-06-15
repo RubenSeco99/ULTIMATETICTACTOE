@@ -6,6 +6,13 @@ function Temporizador(props) {
   //const [tempoFinalizado, setTempoFinalizado] =useState(false);
   
   useEffect(() => {
+    if(tempoRestante == 0 ){
+      props.empate(props.winsMainTab);
+    }
+  },[tempoRestante]);
+
+  
+  useEffect(() => {
     const intervalId = setInterval(() => {
       setTempoRestante((prevTempo) => {
         if (prevTempo > 0) {
@@ -13,7 +20,6 @@ function Temporizador(props) {
         } else {
           clearInterval(intervalId);
           props.changeTime();
-          props.changeGameOn();
           return 0;
         }
       });

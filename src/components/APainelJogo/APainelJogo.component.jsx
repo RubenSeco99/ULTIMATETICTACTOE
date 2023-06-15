@@ -180,6 +180,7 @@ function PainelJogo(props) {
     null,
   ];
 
+  const [winBoard,setWinboard] = useState(0);
   const [buttonValues, setButtonValues] = useState(Array(81).fill(null)); //Todos os quadrados
   const [winsMainTab, setWinsMainTab] = useState(Array(9).fill(null)); //Quadrados grandes
   const [winner, setWinner] = useState(null); //Vencedor do jogo todo
@@ -195,6 +196,7 @@ function PainelJogo(props) {
       const updatedWinsMainTab = [...winsMainTab]; // Cria uma copia do array
       updatedWinsMainTab[tabNumber - 1] = player; // Atualiza o elemento
       setWinsMainTab(updatedWinsMainTab);
+      setWinboard(winBoard+1);
       return;
     }
     if (checkWinsMainGame(currentPlayer)) {
@@ -210,7 +212,8 @@ function PainelJogo(props) {
         setWinner(player);
         return;
       }
-  }},[winsMainTab]);
+  }
+},[winsMainTab]);
 
   useEffect(() =>{
     if(props.numberofplayers == false && ((currentPlayer !== props.jogador1Simbolo) && pcPlays== true)  ){
@@ -220,7 +223,6 @@ function PainelJogo(props) {
           if (buttonValues[botPlay] === null) {
             const choosenBoard = Math.floor(botPlay % 9) + 1;
             const newTabNumber = Math.floor(botPlay / 9) + 1;
-            var winboard = 0;
             setTabNumber(newTabNumber); //Calcula o numero do tabuleiro onde foi jogado de 1 a 9
 
             const newButtonValues = [...buttonValues];
@@ -252,11 +254,20 @@ function PainelJogo(props) {
     if(props.tempoFinalizado == true || props.gameOn == false){
       empate(winsMainTab);
     }
-  },[props.tempoFinalizado,props.gameOn]);// falta ver a questão do empate
+  },[props.tempoFinalizado,props.gameOn]);
+
+  useEffect(() => {
+    if(winBoard==9){
+      empate(winsMainTab);
+    }
+  },[winsMainTab]);
+
+  var decisiveX;
+  var decisiveO;
 
   function empate(winsMainTab){
-    var decisiveX =0;
-    var decisiveO =0;
+     decisiveX =0;
+     decisiveO =0;
 
     for(var i=0;i<9;i++){
       if (winsMainTab[i]=="X"){
@@ -275,7 +286,7 @@ function PainelJogo(props) {
       return;
     }
     else{
-      setWinner("=");
+      setWinner("empate");
     }
   }
 
@@ -358,7 +369,7 @@ function PainelJogo(props) {
     if (buttonValues[index] === null) {
       const choosenBoard = Math.floor(index % 9) + 1;
       const newTabNumber = Math.floor(index / 9) + 1;
-      var winboard = 0;
+      
       setTabNumber(newTabNumber); //Calcula o numero do tabuleiro onde foi jogado de 1 a 9
 
       if (nextTabNumber === 10 || newTabNumber === nextTabNumber) {
@@ -395,10 +406,14 @@ function PainelJogo(props) {
           <a>{props.dificulty}</a>
           <a>Jogador Atual:{currentPlayer}</a>
           <a>{props.dificulty == 'facil' ?(
-                        <Temporizador tempo={20} changeTime={props.changeTime} changeGameOn={props.changeGameOn}/>
+                        <Temporizador tempo={555} changeTime={props.changeTime} changeGameOn={props.changeGameOn} empate={empate} winsMainTab={winsMainTab}/>
                     ) : (<Temporizador tempo={60} changeTime={props.changeTime} changeGameOn={props.changeGameOn}/>)} </a>
           <a>Vencedor:</a>
           <a>{winner}</a>
+          <a>Tabuleiros ganhos por X:</a>
+          <a>{decisiveX}</a>
+          <a>Tabuleiros ganhos por O:</a>
+          <a>{decisiveO}</a>
         </div>
       </section>
       <section id="PainelJogo">

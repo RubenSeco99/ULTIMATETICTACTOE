@@ -8,16 +8,31 @@ function FormDados(props) {
   const [jogador2, setJogador2] = useState("");
   const [advanceToForm, setAdvanceToForm] = useState(false);
   const [dificulty, setDificulty] = useState("facil");
-  const data = {numberofplayers,jogador1,jogador2,dificulty};
+  const [choosenPlayer, setChoosenPlayer] = useState("");//ESCOLHER QUAL O PRIMEIRO simbolo a jogar
+  const [jogador1Simbolo, setJogador1Simbolo] = useState("");//saber qual o simbolo do jogador1 consequentemente o outro é o do jogador2/PC
+  const changeGameOn=props.changeGameOn;
+  const changeTime=props.changeTime;
+  const data = {numberofplayers,jogador1,jogador2,dificulty,choosenPlayer,jogador1Simbolo,changeGameOn,changeTime};
+
+  function sortearSimbolo()
+  {
+    const players = ["X", "O"];
+    const randomIndex = Math.floor(Math.random() * 1);
+    setChoosenPlayer(players[randomIndex]);
+    const playerIndex = Math.floor(Math.random() * 1);
+    setJogador1Simbolo(playerIndex);
+  }
 
   function advance(event) {
     event.preventDefault();
     if(jogador1 !== "" ){
       if(numberofplayers===true && jogador2 !==""){
         setAdvanceToForm(true);
+        sortearSimbolo();
       }
       if(numberofplayers===false){
         setAdvanceToForm(true);
+        sortearSimbolo();
       }
     
     }
@@ -71,7 +86,11 @@ function FormDados(props) {
                             numberofplayers={data.numberofplayers} 
                             jogador1={data.jogador1}
                             jogador2={data.jogador2}
-                            dificulty={data.dificulty} />}
+                            dificulty={data.dificulty}
+                            choosenPlayer={data.choosenPlayer}
+                            changeTime={data.changeTime}
+                            changeGameOn={data.changeGameOn}
+                            jogador1Simbolo={data.jogador1Simbolo} />}
     </div>
   );
 }

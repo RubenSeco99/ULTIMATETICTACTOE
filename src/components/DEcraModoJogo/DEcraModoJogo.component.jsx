@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import FormDados from "../DEscolhaPlayer/DEscolhaPlayer.component";
 import "./DEcraModoJogo.css";
 
-function ModoDeJogo() {//escolha de player vs player ou playver vs pc,leva a preenhcer um formulario com todos os dados
+function ModoDeJogo(props) {//escolha de player vs player ou playver vs pc,leva a preenhcer um formulario com todos os dados
  
   const [twoPlayers, setTwoPlayers] = useState(false);
-
   const [advanceToForm, setAdvanceToForm] = useState(false);
 
   function determinatePlayers(event) {
@@ -28,7 +27,7 @@ function ModoDeJogo() {//escolha de player vs player ou playver vs pc,leva a pre
           <button className="modo-jogo-button" onClick={advance} style={{ display: advanceToForm === false ? 'flex' : 'none' }}>
             Player Vs Pc
           </button>
-          {advanceToForm && <FormDados twoPlayers={twoPlayers} />}
+          {advanceToForm && <FormDados twoPlayers={twoPlayers} changeTime={props.changeTime} changeGameOn={props.changeGameOn} />}
         </div>
   );
 }

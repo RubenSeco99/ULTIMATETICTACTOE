@@ -91,7 +91,6 @@ function PainelJogo(props) {
     null,
     null,
   ];
-
   const CombinacoesPossiveis1_O = [
     "O",
     "O",
@@ -184,7 +183,7 @@ function PainelJogo(props) {
   const [buttonValues, setButtonValues] = useState(Array(81).fill(null)); //Todos os quadrados
   const [winsMainTab, setWinsMainTab] = useState(Array(9).fill(null)); //Quadrados grandes
   const [winner, setWinner] = useState(null); //Vencedor do jogo todo
-  const [currentPlayer, setCurrentPlayer] = useState("X");
+  const [currentPlayer, setCurrentPlayer] = useState(props.choosenPlayer);
   const [fulFilled, setFulFilled] = useState(false);
   const [tabNumber, setTabNumber] = useState(""); //colocar o numero do tabuleiro onde jogou
   const [nextTabNumber, setNextTabNumber] = useState(10); //colocar o numero do tabuleiro onde deve jogar
@@ -204,7 +203,8 @@ function PainelJogo(props) {
     }
   }, [buttonValues]);
 
-  useEffect(()=>{if (checkWinsMainGame(currentPlayer)) {
+  useEffect(()=>{
+    if (checkWinsMainGame(currentPlayer)) {
     if (checkWinsMainGame(currentPlayer)) {
         const player = currentPlayer=='X'? 'O' : 'X';
         setWinner(player);
@@ -212,8 +212,72 @@ function PainelJogo(props) {
       }
   }},[winsMainTab]);
 
+  useEffect(() =>{
+    if(props.numberofplayers == false && ((currentPlayer !== props.jogador1Simbolo) && pcPlays== true)  ){
+      var donePlay =0;//se a jogada for bem sucedida a variavel vai incrementar e sair do ciclo senao continua a testar até encontrar uma jogada valida
+        do{
+          const botPlay = Math.floor(Math.random() * 81);
+          if (buttonValues[botPlay] === null) {
+            const choosenBoard = Math.floor(botPlay % 9) + 1;
+            const newTabNumber = Math.floor(botPlay / 9) + 1;
+            var winboard = 0;
+            setTabNumber(newTabNumber); //Calcula o numero do tabuleiro onde foi jogado de 1 a 9
 
+            const newButtonValues = [...buttonValues];
+              newButtonValues[botPlay] = currentPlayer;
+      
+            if (nextTabNumber === 10 || newTabNumber === nextTabNumber) {
+      
+              if(newButtonValues.toString() !== buttonValues.toString()){
+                setFulFilled(true);
+                setButtonValues(newButtonValues);
+                checkWins(currentPlayer);
+                checkWinsMainGame(currentPlayer);
+                setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
+                if (winsMainTab[choosenBoard-1] == null) {
+                  setNextTabNumber(choosenBoard);
+                } else {
+                  setNextTabNumber(10);
+                }
+                donePlay=1;
+                setPcPlays(false);
+              }
+            }
+          }
+        }while(donePlay == 0);
+    }
+  },[props.choosenPlayer,pcPlays]);//jogada do bot
 
+  useEffect(() => {
+    if(props.tempoFinalizado == true || props.gameOn == false){
+      empate(winsMainTab);
+    }
+  },[props.tempoFinalizado,props.gameOn]);// falta ver a questão do empate
+
+  function empate(winsMainTab){
+    var decisiveX =0;
+    var decisiveO =0;
+
+    for(var i=0;i<9;i++){
+      if (winsMainTab[i]=="X"){
+        decisiveX++;
+      }
+      if (winsMainTab[i]=="O"){
+        decisiveO++;
+      }
+    }
+    if(decisiveX>decisiveO){
+      setWinner("X");
+      return;
+    }
+    if(decisiveO>decisiveX){
+      setWinner("O");
+      return;
+    }
+    else{
+      setWinner("=");
+    }
+  }
 
   const compareArrays = (array1, array2) => {
     for (let i = 0; i < 9; i++) {
@@ -311,6 +375,8 @@ function PainelJogo(props) {
         } else {
           setNextTabNumber(10);
         }
+        if(props.numberofplayers === false){
+        setPcPlays(true);}
       }
     }
   };
@@ -321,21 +387,18 @@ function PainelJogo(props) {
         <h1>Ultimate Tic Tac Toe</h1>
         <div id="recolha_dados">
           <a>Jogador 1:</a>
-          <a>{props.jogador1}</a>
-          <a
-            style={{
-              display: props.numberofplayers === true ? "block" : "none",
-            }}
-          >
-            Jogador 2:
-          </a>
-          <a>{props.jogador2}</a>
+          <a>{props.jogador1} : {`${props.jogador1Simbolo === 'X' ? 'X' : 'O'}`}</a>
+          <a>Jogador 2:</a>
+          <a style={{display: props.numberofplayers === true ? "block" : "none",}}>{props.jogador2} : {`${props.jogador1Simbolo === 'X' ? 'O' : 'X'}`}</a>
+          <a style={{display: props.numberofplayers === false ? "block" : "none",}}>PC : {`${props.jogador1Simbolo === 'X' ? 'O' : 'X'}`}</a>
           <a>Dificuldade:</a>
           <a>{props.dificulty}</a>
           <a>Jogador Atual:{currentPlayer}</a>
           <a>{props.dificulty == 'facil' ?(
-                        <Temporizador tempo = {120}/>
-                    ) : (<Temporizador tempo ={60}/>)} </a>
+                        <Temporizador tempo={20} changeTime={props.changeTime} changeGameOn={props.changeGameOn}/>
+                    ) : (<Temporizador tempo={60} changeTime={props.changeTime} changeGameOn={props.changeGameOn}/>)} </a>
+          <a>Vencedor:</a>
+          <a>{winner}</a>
         </div>
       </section>
       <section id="PainelJogo">

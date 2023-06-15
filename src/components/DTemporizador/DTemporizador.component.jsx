@@ -3,6 +3,7 @@ import "./DTemporizador.css";
 
 function Temporizador(props) {
   const [tempoRestante, setTempoRestante] = useState(props.tempo);
+  //const [tempoFinalizado, setTempoFinalizado] =useState(false);
   
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -11,6 +12,8 @@ function Temporizador(props) {
           return prevTempo - 1;
         } else {
           clearInterval(intervalId);
+          props.changeTime();
+          props.changeGameOn();
           return 0;
         }
       });
